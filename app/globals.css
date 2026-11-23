@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens copied from colearn-finance (src/theme/variables.scss and colearn-design-system.scss).
+ * Light theme only. Poppins = headings/nav/buttons, Overpass = body text.
+ */
+:root {
+  color-scheme: light;
+  --background: #ffffff;
+  --foreground: #181b25;
+}
+
+@theme inline {
+  --font-sans: var(--font-overpass), system-ui, sans-serif;
+  --font-display: var(--font-poppins), system-ui, sans-serif;
+
+  --color-brand-50: #f3faff;   /* neutral50 / aliceBlue */
+  --color-brand-100: #dbeeff;  /* secondaryColor */
+  --color-brand-400: #4a83f9;  /* blue400 */
+  --color-brand-500: #1e5af6;  /* primaryColor */
+  --color-brand-600: #1a48d0;  /* blue600 */
+  --color-ink: #181b25;        /* highEmphasis */
+  --color-subtle: #5e6c84;     /* lowEmphasis */
+  --color-faint: #a4b3cd;      /* disabledText / wildBlueYonder */
+  --color-line: #d5dfee;       /* azureishWhite */
+  --color-danger: #e02954;     /* amaranth */
+  --color-danger-50: #ffe7ec;  /* mistyRose */
+  --color-warn: #e8641f;       /* halloweenOrange */
+  --color-warn-50: #fffbe9;    /* cosmicLatte */
+  --color-ok: #009274;         /* positiveText */
+  --color-ok-50: #e4ffee;      /* green50 */
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-overpass), system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+@layer base {
+  h1, h2, h3 { font-family: var(--font-poppins), system-ui, sans-serif; font-weight: 700; color: var(--color-ink); }
+  h1 { font-size: 24px; line-height: 36px; }
+  h2 { font-size: 18px; line-height: 28px; }
+  button { font-family: var(--font-poppins), system-ui, sans-serif; }
+}
+
+@layer components {
+  .card { @apply rounded-xl border border-line bg-white shadow-[0_0_32px_0_rgba(0,0,0,0.07)]; }
+  .btn { @apply inline-flex cursor-pointer items-center justify-center whitespace-nowrap rounded-md bg-brand-100 px-3 py-2 font-display text-sm font-bold text-brand-500 transition-opacity hover:opacity-80 disabled:cursor-not-allowed disabled:bg-faint disabled:text-white; }
+  .btn-primary { @apply bg-brand-500 text-white; }
+  .btn-danger { @apply bg-danger-50 text-danger; }
+  .input { @apply rounded-md border-2 border-faint bg-white px-3 py-1.5 text-sm text-ink placeholder:text-faint focus:border-brand-500 focus:outline-none; }
+  .link { @apply cursor-pointer text-brand-500 hover:underline; }
+  .muted { @apply text-subtle; }
+  .table-soft { @apply w-full text-sm; }
+  .table-soft th { @apply border-b border-line bg-brand-500 px-4 py-2.5 text-left font-display text-xs font-bold text-white; }
+  .table-soft td { @apply border-b border-line px-4 py-2.5 align-top text-ink; }
+  .table-soft tbody tr:nth-child(even) { @apply bg-brand-50; }
+  .badge { @apply inline-block whitespace-nowrap rounded-full px-2.5 py-0.5 text-xs font-bold; }
+  .alert-error { @apply rounded-lg border border-danger/30 bg-danger-50 px-4 py-2.5 text-sm text-danger; }
+  .alert-ok { @apply rounded-lg border border-ok/30 bg-ok-50 px-4 py-2.5 text-sm text-ok; }
+  .alert-warn { @apply rounded-lg border border-warn/30 bg-warn-50 px-4 py-2.5 text-sm text-warn; }
+}
